@@ -1,0 +1,55 @@
+﻿      #TextArea1 
+        {
+            width: 43px;
+            height: 19px;
+        }
+       
+        .Devicediv {
+            border: 1px solid black;
+            border-radius:5px;
+            float: left;
+            margin: 3px;
+            padding: 3px;
+            Background-color:white;
+        }
+
+        .ButtonMenu
+        {            
+            width:100px;
+            height:50px;
+            margin:2px;
+            border: 2px solid black;          
+            border-radius:15px;
+        }
+    
+       #Panel
+       {
+           margin-left:120px;
+           margin-top:-370px;
+           border-left:1px solid black;
+           border-right:1px solid black;
+           border-radius:8px;
+           Background-color:#eacc01;
+       }
+       #Top
+       {
+           margin-left:110px;                     
+       }
+        #MainDiv
+        {
+            width:1000px;
+            margin-left:180px;
+            border-left:1px solid black;
+            border-right:1px solid black;
+            border-radius:10px;
+            Background-color:#3c5f05;
+           
+        }
+
+        #ButtBlok
+        {
+            width: 106px;
+            margin-left:10px;
+            margin-top:10px;
+           
+        }
