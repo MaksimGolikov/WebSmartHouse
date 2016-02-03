@@ -9,26 +9,43 @@ namespace WebSmartHouse
     class Fridge : Device, IState
     {
         private bool stateFrize;
-        public int Power;
-        public List<string> help;
+        private int power;
+        private List<string> help;
 
-        public Fridge(string Name, bool State, bool stateFrize, int programm)
+        public Fridge(string name, bool state, bool stateFrize, int programm)
         {
-            this.Name = Name;
+            this.name = name;
             this.state = state;
             this.stateFrize = stateFrize;
-            this.Power = programm;
+            this.power = programm;
             id = "Fridge";
         }
 
         public bool Switch()
         {
-            this.state = !state;
-            return state;
+            if (this.state)
+            {
+                this.state = false;
+            }
+            else
+            {
+                this.state = true;
+            }
+
+            return this.state;
         }
-        public void SwitchFrize()
+        public bool SwitchFrize()
         {
-            stateFrize = !stateFrize;
+            if (this.stateFrize)
+            {
+                this.stateFrize = false;
+            }
+            else
+            {
+                this.stateFrize = true;
+            }
+
+            return this.stateFrize;
         }
 
         public override string ToString()
@@ -64,17 +81,18 @@ namespace WebSmartHouse
 
         public void ProgrammUP()
         {
-            if (Power < 5)
-                Power++;
-
-
+            if (power < 5)
+                power++;
         }
         public void ProgrammDown()
         {
-            if (Power > 1)
-                Power--;
+            if (power > 1)
+                power--;
         }
-
+        public int GetPower()
+        {
+            return this.power;
+        }
 
 
         public List<string> Help()

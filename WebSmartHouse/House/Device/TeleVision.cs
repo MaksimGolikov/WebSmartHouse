@@ -9,39 +9,48 @@ namespace WebSmartHouse
     class TeleVision : Device, IState
     {
 
-        public string CurrentChanal;
+        private string currentChanal;
         private int idChanel;
-        private int Brightness;
-        public List<string> help;
-        private List<string> Chanel;
+        private int brightness;
+        private List<string> help;
+        private List<string> chanel;
 
-        public TeleVision(string Name, bool state, int brightness)
+        public TeleVision(string name, bool state, int brightness)
         {
-            this.Name = Name;
+            this.name = name;
             this.state = state;
-            this.Brightness = brightness;
+            this.brightness = brightness;
 
             id = "TV";
 
 
-            Chanel = new List<string>();
+            chanel = new List<string>();
 
-            Chanel.Add("1+1");
-            Chanel.Add("Интер");
-            Chanel.Add("ТРК Украина");
-            Chanel.Add("ТЕТ");
-            Chanel.Add("Dicovery");
-            Chanel.Add("Lion");
-            Chanel.Add("ICTV");
+            chanel.Add("1+1");
+            chanel.Add("Интер");
+            chanel.Add("ТРК Украина");
+            chanel.Add("ТЕТ");
+            chanel.Add("Dicovery");
+            chanel.Add("Lion");
+            chanel.Add("ICTV");
 
-            this.CurrentChanal = Chanel[0];
+            this.currentChanal = chanel[0];
             idChanel = 0;
         }
 
         public bool Switch()
         {
-            this.state = !state;
-            return state;
+
+            if(this.state)
+            {
+                this.state = false;
+            }
+            else
+            {
+                this.state = true;
+            }
+           
+            return this.state;
         }
 
         public override string ToString()
@@ -62,9 +71,9 @@ namespace WebSmartHouse
         public void ChangeUp()
         {
 
-            if (idChanel < Chanel.Count - 1)
+            if (idChanel < chanel.Count - 1)
             {
-                CurrentChanal = Chanel[idChanel + 1];
+                currentChanal = chanel[idChanel + 1];
                 idChanel++;
             }
 
@@ -73,7 +82,7 @@ namespace WebSmartHouse
         {
             if (idChanel > 0)
             {
-                CurrentChanal = Chanel[idChanel - 1];
+                currentChanal = chanel[idChanel - 1];
                 idChanel--;
             }
         }
@@ -85,58 +94,64 @@ namespace WebSmartHouse
             switch (idChanel)
             {
                 case 0:
-                    CurrentChanal = Chanel[0];
+                    currentChanal = chanel[0];
                     idChanel = 0;
                     break;
                 case 1:
-                    CurrentChanal = Chanel[1];
+                    currentChanal = chanel[1];
                     idChanel = 1;
                     break;
                 case 2:
-                    CurrentChanal = Chanel[2];
+                    currentChanal = chanel[2];
                     idChanel = 2;
                     break;
                 case 3:
-                    CurrentChanal = Chanel[3];
+                    currentChanal = chanel[3];
                     idChanel = 3;
                     break;
                 case 4:
-                    CurrentChanal = Chanel[4];
+                    currentChanal = chanel[4];
                     idChanel = 4;
                     break;
                 case 5:
-                    CurrentChanal = Chanel[5];
+                    currentChanal = chanel[5];
                     idChanel = 5;
                     break;
                 case 6:
-                    CurrentChanal = Chanel[6];
+                    currentChanal = chanel[6];
                     idChanel = 6;
                     break;
 
             }
 
 
-            return CurrentChanal;
+            return currentChanal;
         }
+
+        public string GetChanel()
+        {
+            return this.currentChanal;
+        }
+
 
         public void BrightnesUp()
         {
-            if (this.Brightness < 100)
-                this.Brightness += 5;
+            if (this.brightness < 100)
+                this.brightness += 5;
 
 
         }
         public void BrightnesDown()
         {
-            if (this.Brightness > 5)
-                this.Brightness -= 5;
+            if (this.brightness > 5)
+                this.brightness -= 5;
 
 
         }
 
         public string ReturnBrightness()
         {
-            return Convert.ToString(this.Brightness);
+            return Convert.ToString(this.brightness);
         }
 
         public List<string> Help()

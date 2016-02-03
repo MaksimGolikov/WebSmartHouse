@@ -9,8 +9,8 @@ namespace WebSmartHouse
 {
     public partial class Defoult : System.Web.UI.Page
     {
-        private IDictionary<int, Device> DeviceList;
-        private string Filtr;
+        private IDictionary<int, Device> deviceList;
+        private string filtr;
 
         private int id;
        
@@ -19,25 +19,25 @@ namespace WebSmartHouse
         {
             if (IsPostBack)
             {
-                DeviceList = (SortedDictionary<int, Device>)Session["Devices"];
+                deviceList = (SortedDictionary<int, Device>)Session["Devices"];
 
             }
             else
             {
-                DeviceList = new SortedDictionary<int, Device>();
+                deviceList = new SortedDictionary<int, Device>();
 
 
 
-                DeviceList.Add(0, new Lamp("Лампа 1", false, 50));
-                DeviceList.Add(1, new Fridge("Холодильник 1", false, false, 1));
-                DeviceList.Add(2, new TapeRecoder("Музыкальный центр 1", false, false, 20));
-                DeviceList.Add(3, new Conditioner("Кондиционер 1", false, 2));
-                DeviceList.Add(4, new TeleVision("Телевизор 1", false, 50));
-                DeviceList.Add(5, new Kettle("Чайник 1", false));
+                deviceList.Add(0, new Lamp("Лампа 1", false, 50));
+                deviceList.Add(1, new Fridge("Холодильник 1", false, false, 1));
+                deviceList.Add(2, new TapeRecoder("Музыкальный центр 1", false, false, 20));
+                deviceList.Add(3, new Conditioner("Кондиционер 1", false, 2));
+                deviceList.Add(4, new TeleVision("Телевизор 1", false, 50));
+                deviceList.Add(5, new Kettle("Чайник 1", false));
 
 
 
-                Session["Devices"] = DeviceList;
+                Session["Devices"] = deviceList;
                 Session["nextID"] = 6;
 
             }
@@ -57,23 +57,23 @@ namespace WebSmartHouse
 
             }
 
-            Filtr = Convert.ToString(Session["Filtr"]);
-            LoadDevices(Filtr);
+            filtr = Convert.ToString(Session["Filtr"]);
+            LoadDevices(filtr);
         }
 
         public void NewDevice(object sender, EventArgs e)
         {
             int nextid = Convert.ToInt32(Session["nextID"]);
-            Filtr = Convert.ToString(Session["Filtr"]);
+            filtr = Convert.ToString(Session["Filtr"]);
 
-            switch (Filtr)
+            switch (filtr)
             {
                 case "Lamp":
 
                     Lamp newLamp;
                     newLamp = new Lamp("Лампа " + nextid, false, 50);
-                    DeviceList.Add(nextid, newLamp);
-                    DevicePanel.Controls.Add(new FormForDevice(nextid, DeviceList));
+                    deviceList.Add(nextid, newLamp);
+                    DevicePanel.Controls.Add(new FormForDevice(nextid, deviceList));
 
 
                     break;
@@ -82,8 +82,8 @@ namespace WebSmartHouse
 
                     Fridge newFridge;
                     newFridge = new Fridge("Холодильник " + nextid, false, false, 1);
-                    DeviceList.Add(nextid, newFridge);
-                    DevicePanel.Controls.Add(new FormForDevice(nextid, DeviceList));
+                    deviceList.Add(nextid, newFridge);
+                    DevicePanel.Controls.Add(new FormForDevice(nextid, deviceList));
 
                     break;
 
@@ -91,8 +91,8 @@ namespace WebSmartHouse
 
                     TapeRecoder newTR;
                     newTR = new TapeRecoder("Музыкальный центр " + nextid, false, false, 20);
-                    DeviceList.Add(nextid, newTR);
-                    DevicePanel.Controls.Add(new FormForDevice(nextid, DeviceList));
+                    deviceList.Add(nextid, newTR);
+                    DevicePanel.Controls.Add(new FormForDevice(nextid, deviceList));
 
                     break;
 
@@ -100,8 +100,8 @@ namespace WebSmartHouse
 
                     Conditioner newCond;
                     newCond = new Conditioner("Кондиционер " + nextid, false, 2);
-                    DeviceList.Add(nextid, newCond);
-                    DevicePanel.Controls.Add(new FormForDevice(nextid, DeviceList));
+                    deviceList.Add(nextid, newCond);
+                    DevicePanel.Controls.Add(new FormForDevice(nextid, deviceList));
 
                     break;
 
@@ -110,8 +110,8 @@ namespace WebSmartHouse
                     TeleVision newTV;
 
                     newTV = new TeleVision("Телевизор " + nextid, false, 50);
-                    DeviceList.Add(nextid, newTV);
-                    DevicePanel.Controls.Add(new FormForDevice(nextid, DeviceList));
+                    deviceList.Add(nextid, newTV);
+                    DevicePanel.Controls.Add(new FormForDevice(nextid, deviceList));
 
                     break;
 
@@ -120,8 +120,8 @@ namespace WebSmartHouse
                     Kettle newKettle;
 
                     newKettle = new Kettle("Чайник " + nextid, false);
-                    DeviceList.Add(nextid, newKettle);
-                    DevicePanel.Controls.Add(new FormForDevice(nextid, DeviceList));
+                    deviceList.Add(nextid, newKettle);
+                    DevicePanel.Controls.Add(new FormForDevice(nextid, deviceList));
 
                     break;
             }
@@ -139,114 +139,68 @@ namespace WebSmartHouse
                 case "LampButt":
 
 
-                    Filtr = "Lamp";
-                    Session["Filtr"] = Filtr;
+                    filtr = "Lamp";
+                    Session["Filtr"] = filtr;
                     DevicePanel.Controls.Clear();
-
-
-                    for (int iD = 0; iD < DeviceList.Count; iD++)
-                    {
-                        if (DeviceList[iD].id == Filtr)
-                        {
-                            DevicePanel.Controls.Add(new FormForDevice(iD, DeviceList));
-                        }
-                    }
-
-
-
+                    LoadDevices(filtr);
+                    
                     break;
 
                 case "FridgeButt":
 
-                    Filtr = "Fridge";
+                    filtr = "Fridge";
 
-                    Session["Filtr"] = Filtr;
+                    Session["Filtr"] = filtr;
                     DevicePanel.Controls.Clear();
 
-                    for (int iD = 1; iD < DeviceList.Count; iD++)
-                    {
-                        if (DeviceList[iD].id == Filtr)
-                        {
-                            DevicePanel.Controls.Add(new FormForDevice(iD, DeviceList));
-                        }
-                    }
-
+                    LoadDevices(filtr);
 
                     break;
 
                 case "TapRiderButt":
 
-                    Filtr = "TR";
+                    filtr = "TR";
 
 
-                    Session["Filtr"] = Filtr;
+                    Session["Filtr"] = filtr;
                     DevicePanel.Controls.Clear();
 
-                    for (int iD = 1; iD < DeviceList.Count; iD++)
-                    {
-                        if (DeviceList[iD].id == Filtr)
-                        {
-                            DevicePanel.Controls.Add(new FormForDevice(iD, DeviceList));
-                        }
-                    }
-
-
+                    LoadDevices(filtr);
 
                     break;
 
                 case "ConditionerButt":
 
-                    Filtr = "Cond";
+                    filtr = "Cond";
 
 
-                    Session["Filtr"] = Filtr;
+                    Session["Filtr"] = filtr;
                     DevicePanel.Controls.Clear();
 
-                    for (int iD = 1; iD < DeviceList.Count; iD++)
-                    {
-                        if (DeviceList[iD].id == Filtr)
-                        {
-                            DevicePanel.Controls.Add(new FormForDevice(iD, DeviceList));
-                        }
-                    }
-
-
+                    LoadDevices(filtr);
 
                     break;
 
                 case "TVButt":
 
-                    Filtr = "TV";
+                    filtr = "TV";
 
-                    Session["Filtr"] = Filtr;
+                    Session["Filtr"] = filtr;
                     DevicePanel.Controls.Clear();
 
-                    for (int iD = 1; iD < DeviceList.Count; iD++)
-                    {
-                        if (DeviceList[iD].id == Filtr)
-                        {
-                            DevicePanel.Controls.Add(new FormForDevice(iD, DeviceList));
-                        }
-                    }
-
+                    LoadDevices(filtr);
 
                     break;
 
                 case "KettleButt":
 
-                    Filtr = "Kettle";
+                    filtr = "Kettle";
 
 
-                    Session["Filtr"] = Filtr;
+                    Session["Filtr"] = filtr;
                     DevicePanel.Controls.Clear();
 
-                    for (int iD = 1; iD < DeviceList.Count; iD++)
-                    {
-                        if (DeviceList[iD].id == Filtr)
-                        {
-                            DevicePanel.Controls.Add(new FormForDevice(iD, DeviceList));
-                        }
-                    }
+                    LoadDevices(filtr);
 
                     break;
             }
@@ -254,15 +208,22 @@ namespace WebSmartHouse
 
 
 
-        private void LoadDevices(string Filtr)
+        private void LoadDevices(string filtr)
         {
-            for (int key = 0; key < DeviceList.Count; key++)
+           
+            foreach(int key in deviceList.Keys)
             {
-                if (DeviceList[key].id == Filtr)
+                try
                 {
-                    DevicePanel.Controls.Add(new FormForDevice(key, DeviceList));
+                    if (deviceList[key].GetId() == filtr)
+                    {
+                        DevicePanel.Controls.Add(new FormForDevice(key, deviceList));
+                    }
                 }
+               catch
+                {
 
+                }
             }
         }
 

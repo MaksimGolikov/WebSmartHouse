@@ -8,46 +8,41 @@ namespace WebSmartHouse
 {
     class Conditioner : Device, IState
     {
-        private int Programm;
-        public List<string> help;
+        private int programm;
+        private List<string> help;
 
-        public Conditioner(string Name, bool state, int programm)
+        public Conditioner(string name, bool state, int programm)
         {
-            this.Name = Name;
+            this.name = name;
             this.state = state;
-            this.Programm = programm;
+            this.programm = programm;
             id = "Cond";
         }
 
         public bool Switch()
         {
-            this.state = !state;
-            return state;
+            if (this.state)
+            {
+                this.state = false;
+            }
+            else
+            {
+                this.state = true;
+            }
+
+            return this.state;
         }
 
-
-        private void Hot()
-        {
-            Programm = 3;
-        }
-        private void Odinary()
-        {
-            Programm = 2;
-        }
-        private void Cold()
-        {
-            Programm = 1;
-        }
 
         public void ProgramUp()
         {
-            if (Programm < 3)
-                Programm++;
+            if (programm < 3)
+                programm++;
         }
         public void ProgramDown()
         {
-            if (Programm > 1)
-                Programm--;
+            if (programm > 1)
+                programm--;
         }
 
         public override string ToString()
@@ -61,20 +56,18 @@ namespace WebSmartHouse
             {
                 state = "Выключен";
             }
-
-
-
+            
             return state;
         }
         public string ProgramState()
         {
             string program;
 
-            if (this.Programm == 1)
+            if (this.programm == 1)
             {
                 program = "охлаждение";
             }
-            else if (this.Programm == 2)
+            else if (this.programm == 2)
             {
                 program = "проветривание";
             }

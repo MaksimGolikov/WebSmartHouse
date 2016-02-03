@@ -8,21 +8,29 @@ namespace WebSmartHouse
 {
     class Kettle : Device, IState
     {
-        public List<string> help;
+        private List<string> help;
 
 
 
-        public Kettle(string Name, bool state)
+        public Kettle(string name, bool state)
         {
-            this.Name = Name;
+            this.name = name;
             this.state = state;
             id = "Kettle";
         }
 
         public bool Switch()
         {
-            this.state = !state;
-            return state;
+            if (this.state)
+            {
+                this.state = false;
+            }
+            else
+            {
+                this.state = true;
+            }
+
+            return this.state;
         }
 
         public override string ToString()
@@ -36,7 +44,7 @@ namespace WebSmartHouse
             {
                 state = "Выключен";
             }
-            return "состояние: " + state;
+            return  state;
         }
 
 

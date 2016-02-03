@@ -8,29 +8,45 @@ namespace WebSmartHouse
 {
     class TapeRecoder : Device, IState
     {
-        public bool mode;
-        public int voluem;
-        public List<string> help;
+        private bool mode;
+        private int voluem;
+        private List<string> help;
 
-        public TapeRecoder(string Name, bool state, bool IsCdMod, int volume)
+        public TapeRecoder(string name, bool state, bool isCdMod, int volume)
         {
-            this.Name = Name;
+            this.name = name;
             this.state = state;
-            this.mode = IsCdMod;
+            this.mode = isCdMod;
             this.voluem = volume;
             id = "TR";
         }
 
         public bool Switch()
         {
-            this.state = !state;
-            return state;
+            if (this.state)
+            {
+                this.state = false;
+            }
+            else
+            {
+                this.state = true;
+            }
+
+            return this.state;
         }
 
         public bool Mode()
         {
-            this.mode = !mode;
-            return mode;
+            if (this.mode)
+            {
+                this.mode = false;
+            }
+            else
+            {
+                this.mode = true;
+            }
+
+            return this.mode;
         }
 
         public void VolumeUp()
@@ -42,6 +58,10 @@ namespace WebSmartHouse
         {
             if (voluem > 0)
                 voluem--;
+        }
+        public int GetVolume()
+        {
+            return this.voluem;
         }
 
         public override string ToString()

@@ -77,7 +77,7 @@
     <Compile Include="House\Device\Lamp.cs" />
     <Compile Include="House\Device\TeleVision.cs" />
     <Compile Include="House\FormForDevice.cs" />
-    <Compile Include="House\interface\Device.cs" />
+    <Compile Include="House\Device\Device.cs" />
     <Compile Include="House\interface\IState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

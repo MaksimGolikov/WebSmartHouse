@@ -8,28 +8,36 @@ namespace WebSmartHouse
 {
     class Lamp : Device, IState
     {
-        private int Brightness;
-        private System.Drawing.Color ColorLight;
+        private int brightness;
+        private System.Drawing.Color colorLight;
 
-        public List<string> help;
-        private List<System.Drawing.Color> Colors;
+        private List<string> help;
+        private List<System.Drawing.Color> colors;
 
 
 
-        public Lamp(string Name, bool state, int brightnes)
+        public Lamp(string name, bool state, int brightnes)
         {
             this.state = state;
-            this.Name = Name;
-            Brightness = brightnes;
-            ColorLight = System.Drawing.Color.White;
+            this.name = name;
+            brightness = brightnes;
+            colorLight = System.Drawing.Color.White;
             id = "Lamp";
         }
 
 
         public bool Switch()
         {
-            this.state = !state;
-            return state;
+            if (this.state)
+            {
+                this.state = false;
+            }
+            else
+            {
+                this.state = true;
+            }
+
+            return this.state;
         }
 
         public override string ToString()
@@ -48,52 +56,52 @@ namespace WebSmartHouse
 
         public int BrightnesUp()
         {
-            if (this.Brightness < 100)
-                this.Brightness += 5;
+            if (this.brightness < 100)
+                this.brightness += 5;
 
-            return this.Brightness;
+            return this.brightness;
         }
         public int BrightnesDown()
         {
-            if (this.Brightness > 10)
-                this.Brightness += -5;
+            if (this.brightness > 10)
+                this.brightness += -5;
 
-            return this.Brightness;
+            return this.brightness;
         }
 
         public string BrightnessRetutn()
         {
-            return Convert.ToString(this.Brightness);
+            return Convert.ToString(this.brightness);
         }
 
         public void SelectColor(string idColor)
         {
 
-            Colors = new List<System.Drawing.Color>();
+            colors = new List<System.Drawing.Color>();
 
-            Colors.Add(System.Drawing.Color.White);
-            Colors.Add(System.Drawing.Color.Green);
-            Colors.Add(System.Drawing.Color.Blue);
-            Colors.Add(System.Drawing.Color.Red);
-            Colors.Add(System.Drawing.Color.Yellow);
+            colors.Add(System.Drawing.Color.White);
+            colors.Add(System.Drawing.Color.Green);
+            colors.Add(System.Drawing.Color.Blue);
+            colors.Add(System.Drawing.Color.Red);
+            colors.Add(System.Drawing.Color.Yellow);
 
 
             switch (idColor)
             {
                 case "White":
-                    ColorLight = Colors[0];
+                    colorLight = colors[0];
                     break;
                 case "Green":
-                    ColorLight = Colors[1];
+                    colorLight = colors[1];
                     break;
                 case "Blue":
-                    ColorLight = Colors[2];
+                    colorLight = colors[2];
                     break;
                 case "Red":
-                    ColorLight = Colors[3];
+                    colorLight = colors[3];
                     break;
                 case "Yellow":
-                    ColorLight = Colors[4];
+                    colorLight = colors[4];
                     break;
 
             }
@@ -102,7 +110,7 @@ namespace WebSmartHouse
 
         public System.Drawing.Color ReturnColor()
         {
-            return this.ColorLight;
+            return this.colorLight;
         }
 
 
