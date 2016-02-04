@@ -10,7 +10,7 @@ namespace WebSmartHouse
     {
         private bool stateFrize;
         private int power;
-        private List<string> help;
+       
 
         public Fridge(string name, bool state, bool stateFrize, int programm)
         {
@@ -95,30 +95,6 @@ namespace WebSmartHouse
         }
 
 
-        public List<string> Help()
-        {
-            help = new List<string>();
-            string val;
-
-            val = "Доступные команды:";
-            help.Add(val);
-            val = "ON  for switch on";
-            help.Add(val);
-            val = "OFF  for switch off";
-            help.Add(val);
-            val = "OfF  for switch off Frize";
-            help.Add(val);
-            val = "OnF  for switch on Frize";
-            help.Add(val);
-            val = "PR for change programm on cold";
-            help.Add(val);
-            val = "del for delete";
-            help.Add(val);
-            val = "Press anykey for continue";
-            help.Add(val);
-
-            return help;
-
-        }
+        
     }
 }

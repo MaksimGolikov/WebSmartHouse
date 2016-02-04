@@ -10,7 +10,7 @@ namespace WebSmartHouse
     {
         private bool mode;
         private int voluem;
-        private List<string> help;
+      
 
         public TapeRecoder(string name, bool state, bool isCdMod, int volume)
         {
@@ -92,25 +92,6 @@ namespace WebSmartHouse
 
 
 
-        public List<string> Help()
-        {
-            help = new List<string>();
-            string val;
-
-            val = "Доступные команды:";
-            help.Add(val);
-            val = "ON  for switch on";
-            help.Add(val);
-            val = "OFF  for switch off";
-            help.Add(val);
-            val = "CT for change time of alarm";
-            help.Add(val);
-            val = "del for delete";
-            help.Add(val);
-            val = "Press anykey for continue";
-            help.Add(val);
-            return help;
-
-        }
+       
     }
 }

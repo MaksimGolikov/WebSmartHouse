@@ -9,8 +9,7 @@ namespace WebSmartHouse
     class Conditioner : Device, IState
     {
         private int programm;
-        private List<string> help;
-
+     
         public Conditioner(string name, bool state, int programm)
         {
             this.name = name;
@@ -78,30 +77,6 @@ namespace WebSmartHouse
             return program;
         }
 
-        public List<string> Help()
-        {
-            help = new List<string>();
-            string val;
-
-            val = "Доступные команды:";
-            help.Add(val);
-            val = "ON  for switch on";
-            help.Add(val);
-            val = "OFF  for switch off";
-            help.Add(val);
-            val = "H for change programm on hot";
-            help.Add(val);
-            val = "S for change programm on odinary";
-            help.Add(val);
-            val = "O for change programm on odinary";
-            help.Add(val);
-            val = "del for delete";
-            help.Add(val);
-            val = "Press anykey for continue";
-            help.Add(val);
-
-            return help;
-
-        }
+        
     }
 }

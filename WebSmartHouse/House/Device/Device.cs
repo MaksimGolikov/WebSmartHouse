@@ -8,9 +8,9 @@ namespace WebSmartHouse
 {
     public class Device
     {
-        protected string name;
-        protected bool state;
-        protected string id;
+        protected string name{get;set;}
+        protected bool state{get;set;}
+        protected string id{get;set;}
 
         public string GetName()
         {

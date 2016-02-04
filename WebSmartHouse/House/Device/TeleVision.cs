@@ -11,8 +11,7 @@ namespace WebSmartHouse
 
         private string currentChanal;
         private int idChanel;
-        private int brightness;
-        private List<string> help;
+        private int brightness;       
         private List<string> chanel;
 
         public TeleVision(string name, bool state, int brightness)
@@ -154,31 +153,6 @@ namespace WebSmartHouse
             return Convert.ToString(this.brightness);
         }
 
-        public List<string> Help()
-        {
-            help = new List<string>();
-            string val;
-
-            val = "Доступные команды:";
-            help.Add(val);
-            val = "ON  for switch on";
-            help.Add(val);
-            val = "OFF  for switch off";
-            help.Add(val);
-            val = "N next chanal";
-            help.Add(val);
-            val = "C Chuse chanal";
-            help.Add(val);
-            val = "P past chanal";
-            help.Add(val);
-            val = "BR for change brightness";
-            help.Add(val);
-            val = "del for delete";
-            help.Add(val);
-            val = "Press anykey for continue";
-            help.Add(val);
-            return help;
-
-        }
+       
     }
 }

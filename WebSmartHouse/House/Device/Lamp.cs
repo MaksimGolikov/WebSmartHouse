@@ -10,8 +10,7 @@ namespace WebSmartHouse
     {
         private int brightness;
         private System.Drawing.Color colorLight;
-
-        private List<string> help;
+        
         private List<System.Drawing.Color> colors;
 
 
@@ -115,28 +114,6 @@ namespace WebSmartHouse
 
 
 
-        public List<string> Help()
-        {
-            help = new List<string>();
-            string val;
-
-            val = "Доступные команды:";
-            help.Add(val);
-            val = "ON  for switch on";
-            help.Add(val);
-            val = "OFF  for switch off";
-            help.Add(val);
-            val = "BR for change brightness";
-            help.Add(val);
-            val = "CL for change light`s color";
-            help.Add(val);
-            val = "del for delete";
-            help.Add(val);
-            val = "Press anykey for continue";
-            help.Add(val);
-
-            return help;
-
-        }
+        
     }
 }
