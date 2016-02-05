@@ -61,7 +61,7 @@ namespace WebSmartHouse
             LoadDevices(filtr);
         }
 
-        public void NewDevice(object sender, EventArgs e)
+        private void NewDevice(object sender, EventArgs e)
         {
             int nextid = Convert.ToInt32(Session["nextID"]);
             filtr = Convert.ToString(Session["Filtr"]);
