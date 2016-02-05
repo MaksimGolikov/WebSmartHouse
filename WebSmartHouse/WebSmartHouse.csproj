@@ -70,7 +70,7 @@
     <Compile Include="Defoult.aspx.designer.cs">
       <DependentUpon>Defoult.aspx</DependentUpon>
     </Compile>
-    <Compile Include="House\Device\Tape_Recoder.cs" />
+    <Compile Include="House\Device\TapeRecoder.cs" />
     <Compile Include="House\Device\Conditioner.cs" />
     <Compile Include="House\Device\Fridge.cs" />
     <Compile Include="House\Device\Kettle.cs" />
