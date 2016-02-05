@@ -17,32 +17,32 @@ namespace WebSmartHouse
 
         public Lamp(string name, bool state, int brightnes)
         {
-            this.state = state;
-            this.name = name;
+            this.State = state;
+            this.Name = name;
             brightness = brightnes;
             colorLight = System.Drawing.Color.White;
-            id = "Lamp";
+            Id = "Lamp";
         }
 
 
         public bool Switch()
         {
-            if (this.state)
+            if (this.State)
             {
-                this.state = false;
+                this.State = false;
             }
             else
             {
-                this.state = true;
+                this.State = true;
             }
 
-            return this.state;
+            return this.State;
         }
 
         public override string ToString()
         {
             string state;
-            if (this.state)
+            if (this.State)
             {
                 state = "Включен";
             }

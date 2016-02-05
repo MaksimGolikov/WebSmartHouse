@@ -14,25 +14,25 @@ namespace WebSmartHouse
 
         public TapeRecoder(string name, bool state, bool isCdMod, int volume)
         {
-            this.name = name;
-            this.state = state;
+            this.Name = name;
+            this.State = state;
             this.mode = isCdMod;
             this.voluem = volume;
-            id = "TR";
+            Id = "TR";
         }
 
         public bool Switch()
         {
-            if (this.state)
+            if (this.State)
             {
-                this.state = false;
+                this.State = false;
             }
             else
             {
-                this.state = true;
+                this.State = true;
             }
 
-            return this.state;
+            return this.State;
         }
 
         public bool Mode()
@@ -67,7 +67,7 @@ namespace WebSmartHouse
         public override string ToString()
         {
             string state;
-            if (this.state)
+            if (this.State)
             {
                 state = "Включен";
             }

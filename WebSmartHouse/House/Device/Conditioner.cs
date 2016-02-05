@@ -12,24 +12,24 @@ namespace WebSmartHouse
      
         public Conditioner(string name, bool state, int programm)
         {
-            this.name = name;
-            this.state = state;
+            this.Name = name;
+            this.State = state;
             this.programm = programm;
-            id = "Cond";
+            Id = "Cond";
         }
 
         public bool Switch()
         {
-            if (this.state)
+            if (this.State)
             {
-                this.state = false;
+                this.State = false;
             }
             else
             {
-                this.state = true;
+                this.State = true;
             }
 
-            return this.state;
+            return this.State;
         }
 
 
@@ -47,7 +47,7 @@ namespace WebSmartHouse
         public override string ToString()
         {
             string state;
-            if (this.state)
+            if (this.State)
             {
                 state = "Включен";
             }

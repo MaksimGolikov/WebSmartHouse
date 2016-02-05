@@ -8,21 +8,27 @@ namespace WebSmartHouse
 {
     public class Device
     {
-        protected string name{get;set;}
-        protected bool state{get;set;}
-        protected string id{get;set;}
+        private string name;
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
 
-        public string GetName()
+
+        private bool state;
+        public bool State
         {
-            return this.name;
+            get { return state; }
+            set { state = value; }
         }
-        public bool GetState()
+
+        private string id;
+        public string Id
         {
-            return this.state;
+            get { return id; }
+            set { id = value; }
         }
-        public string GetId()
-        {
-            return this.id;
-        }
+
     }
 }

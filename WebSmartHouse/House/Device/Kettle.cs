@@ -13,29 +13,29 @@ namespace WebSmartHouse
 
         public Kettle(string name, bool state)
         {
-            this.name = name;
-            this.state = state;
-            id = "Kettle";
+            this.Name = name;
+            this.State = state;
+            Id = "Kettle";
         }
 
         public bool Switch()
         {
-            if (this.state)
+            if (this.State)
             {
-                this.state = false;
+                this.State = false;
             }
             else
             {
-                this.state = true;
+                this.State = true;
             }
 
-            return this.state;
+            return this.State;
         }
 
         public override string ToString()
         {
             string state;
-            if (this.state)
+            if (this.State)
             {
                 state = "Включен";
             }

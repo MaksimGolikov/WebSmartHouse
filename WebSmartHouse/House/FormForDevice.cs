@@ -67,7 +67,7 @@ namespace WebSmartHouse
         protected void Initializer()
         {
             CssClass = "Devicediv";
-            Controls.Add(Span("Name: " + allDeviceList[id].GetName() + "<br />"));
+            Controls.Add(Span("Name: " + allDeviceList[id].Name + "<br />"));
 
             stateButton = new Button();
             stateButton.Text = "Вкл/Выкл";
@@ -75,7 +75,7 @@ namespace WebSmartHouse
             Controls.Add(stateButton);
 
 
-            switch (allDeviceList[id].GetId())
+            switch (allDeviceList[id].Id)
             {
                 case "Lamp":
 
@@ -183,16 +183,16 @@ namespace WebSmartHouse
         }
         private void StateButtonClick(object sender, EventArgs e)
         {
-            switch (allDeviceList[id].GetId())
+            switch (allDeviceList[id].Id)
             {
                 case "Lamp":
                     ((Lamp)allDeviceList[id]).Switch();
                     string st = ((Lamp)allDeviceList[id]).ToString();
                     state.Text = st;
 
-                    brightnessUp.Enabled = ((Lamp)allDeviceList[id]).GetState();
-                    brightnessDown.Enabled = ((Lamp)allDeviceList[id]).GetState();
-                    colorVolue.Enabled = ((Lamp)allDeviceList[id]).GetState();
+                    brightnessUp.Enabled = ((Lamp)allDeviceList[id]).State;
+                    brightnessDown.Enabled = ((Lamp)allDeviceList[id]).State;
+                    colorVolue.Enabled = ((Lamp)allDeviceList[id]).State;
 
                     break;
 
@@ -201,9 +201,9 @@ namespace WebSmartHouse
                     string ft = ((Fridge)allDeviceList[id]).ToString();
                     state.Text = ft;
 
-                    frizeButton.Enabled = ((Fridge)allDeviceList[id]).GetState();
-                    programFridgeDown.Enabled = ((Fridge)allDeviceList[id]).GetState();
-                    programFridgeUp.Enabled = ((Fridge)allDeviceList[id]).GetState();
+                    frizeButton.Enabled = ((Fridge)allDeviceList[id]).State;
+                    programFridgeDown.Enabled = ((Fridge)allDeviceList[id]).State;
+                    programFridgeUp.Enabled = ((Fridge)allDeviceList[id]).State;
                     break;
 
                 case "Cond":
@@ -211,8 +211,8 @@ namespace WebSmartHouse
                     string ct = ((Conditioner)allDeviceList[id]).ToString();
                     state.Text = ct;
 
-                    programCondDown.Enabled = ((Conditioner)allDeviceList[id]).GetState();
-                    programCondUp.Enabled = ((Conditioner)allDeviceList[id]).GetState();
+                    programCondDown.Enabled = ((Conditioner)allDeviceList[id]).State;
+                    programCondUp.Enabled = ((Conditioner)allDeviceList[id]).State;
 
 
                     break;
@@ -222,9 +222,9 @@ namespace WebSmartHouse
                     string tt = ((TapeRecoder)allDeviceList[id]).ToString();
                     state.Text = tt;
 
-                    modeTR.Enabled = ((TapeRecoder)allDeviceList[id]).GetState();
-                    volumeDown.Enabled = ((TapeRecoder)allDeviceList[id]).GetState();
-                    volumeUp.Enabled = ((TapeRecoder)allDeviceList[id]).GetState();
+                    modeTR.Enabled = ((TapeRecoder)allDeviceList[id]).State;
+                    volumeDown.Enabled = ((TapeRecoder)allDeviceList[id]).State;
+                    volumeUp.Enabled = ((TapeRecoder)allDeviceList[id]).State;
                     break;
 
                 case "Kettle":
@@ -238,11 +238,11 @@ namespace WebSmartHouse
                     string vt = ((TeleVision)allDeviceList[id]).ToString();
                     state.Text = vt;
 
-                    chanelUp.Enabled = ((TeleVision)allDeviceList[id]).GetState();
-                    chanelDown.Enabled = ((TeleVision)allDeviceList[id]).GetState();
-                    chооseChanel.Enabled = ((TeleVision)allDeviceList[id]).GetState();
-                    brightnessUp.Enabled = ((TeleVision)allDeviceList[id]).GetState();
-                    brightnessDown.Enabled = ((TeleVision)allDeviceList[id]).GetState();
+                    chanelUp.Enabled = ((TeleVision)allDeviceList[id]).State;
+                    chanelDown.Enabled = ((TeleVision)allDeviceList[id]).State;
+                    chооseChanel.Enabled = ((TeleVision)allDeviceList[id]).State;
+                    brightnessUp.Enabled = ((TeleVision)allDeviceList[id]).State;
+                    brightnessDown.Enabled = ((TeleVision)allDeviceList[id]).State;
                     break;
             }
 
@@ -254,9 +254,9 @@ namespace WebSmartHouse
 
                 case "->":
 
-                    if (allDeviceList[id].GetState())
+                    if (allDeviceList[id].State)
                     {
-                        switch (allDeviceList[id].GetId())
+                        switch (allDeviceList[id].Id)
                         {
                             case "Lamp":
 
@@ -295,9 +295,9 @@ namespace WebSmartHouse
 
                 case "<-":
 
-                    if (allDeviceList[id].GetState())
+                    if (allDeviceList[id].State)
                     {
-                        switch (allDeviceList[id].GetId())
+                        switch (allDeviceList[id].Id)
                         {
                             case "Lamp":
 
@@ -348,7 +348,7 @@ namespace WebSmartHouse
 
                 case "-->":
 
-                    if (allDeviceList[id].GetId() == "TV" && allDeviceList[id].GetState())
+                    if (allDeviceList[id].Id == "TV" && allDeviceList[id].State)
                     {
                         ((TeleVision)allDeviceList[id]).ChangeUp();
                         currentChanel.Text = ((TeleVision)allDeviceList[id]).GetChanel();
@@ -358,7 +358,7 @@ namespace WebSmartHouse
 
                 case "<--":
 
-                    if (allDeviceList[id].GetId() == "TV" && allDeviceList[id].GetState())
+                    if (allDeviceList[id].Id == "TV" && allDeviceList[id].State)
                     {
                         ((TeleVision)allDeviceList[id]).ChangeDown();
                         currentChanel.Text = ((TeleVision)allDeviceList[id]).GetChanel();
@@ -370,13 +370,13 @@ namespace WebSmartHouse
         private void ListBoxChanged(object sender, EventArgs e)
         {
 
-            if (allDeviceList[id].GetId() == "Lamp" && allDeviceList[id].GetState())
+            if (allDeviceList[id].Id == "Lamp" && allDeviceList[id].State)
             {
                 ((Lamp)allDeviceList[id]).SelectColor(Convert.ToString(colorVolue.SelectedItem));
                 colorLight.BackColor = ((Lamp)allDeviceList[id]).ReturnColor();
             }
 
-            else if (allDeviceList[id].GetId() == "TV" && allDeviceList[id].GetState())
+            else if (allDeviceList[id].Id == "TV" && allDeviceList[id].State)
             {
                 ((TeleVision)allDeviceList[id]).ChuseChanal(chооseChanel.SelectedIndex);
                 currentChanel.Text = ((TeleVision)allDeviceList[id]).GetChanel();
@@ -423,9 +423,9 @@ namespace WebSmartHouse
 
 
             colorLight.BackColor = ((Lamp)allDeviceList[id]).ReturnColor();
-            brightnessUp.Enabled = ((Lamp)allDeviceList[id]).GetState();
-            brightnessDown.Enabled = ((Lamp)allDeviceList[id]).GetState();
-            colorVolue.Enabled = ((Lamp)allDeviceList[id]).GetState();
+            brightnessUp.Enabled = ((Lamp)allDeviceList[id]).State;
+            brightnessDown.Enabled = ((Lamp)allDeviceList[id]).State;
+            colorVolue.Enabled = ((Lamp)allDeviceList[id]).State;
 
         }
         private void InitializFridge()
@@ -457,9 +457,9 @@ namespace WebSmartHouse
             Controls.Add(programFridgeDown);
 
 
-            frizeButton.Enabled = ((Fridge)allDeviceList[id]).GetState();
-            programFridgeDown.Enabled = ((Fridge)allDeviceList[id]).GetState();
-            programFridgeUp.Enabled = ((Fridge)allDeviceList[id]).GetState();
+            frizeButton.Enabled = ((Fridge)allDeviceList[id]).State;
+            programFridgeDown.Enabled = ((Fridge)allDeviceList[id]).State;
+            programFridgeUp.Enabled = ((Fridge)allDeviceList[id]).State;
 
         }
         private void InitializTR()
@@ -490,9 +490,9 @@ namespace WebSmartHouse
             Controls.Add(volumeDown);
 
 
-            modeTR.Enabled = ((TapeRecoder)allDeviceList[id]).GetState();
-            volumeDown.Enabled = ((TapeRecoder)allDeviceList[id]).GetState();
-            volumeUp.Enabled = ((TapeRecoder)allDeviceList[id]).GetState();
+            modeTR.Enabled = ((TapeRecoder)allDeviceList[id]).State;
+            volumeDown.Enabled = ((TapeRecoder)allDeviceList[id]).State;
+            volumeUp.Enabled = ((TapeRecoder)allDeviceList[id]).State;
 
         }
         private void InitializCond()
@@ -515,8 +515,8 @@ namespace WebSmartHouse
             Controls.Add(programCondDown);
             Controls.Add(Span("<br/> "));
 
-            programCondDown.Enabled = ((Conditioner)allDeviceList[id]).GetState();
-            programCondUp.Enabled = ((Conditioner)allDeviceList[id]).GetState();
+            programCondDown.Enabled = ((Conditioner)allDeviceList[id]).State;
+            programCondUp.Enabled = ((Conditioner)allDeviceList[id]).State;
         }
         private void InitializTV()
         {
@@ -567,11 +567,11 @@ namespace WebSmartHouse
             Controls.Add(brightnessDown);
 
 
-            chanelUp.Enabled = ((TeleVision)allDeviceList[id]).GetState();
-            chanelDown.Enabled = ((TeleVision)allDeviceList[id]).GetState();
-            chооseChanel.Enabled = ((TeleVision)allDeviceList[id]).GetState();
-            brightnessUp.Enabled = ((TeleVision)allDeviceList[id]).GetState();
-            brightnessDown.Enabled = ((TeleVision)allDeviceList[id]).GetState();
+            chanelUp.Enabled = ((TeleVision)allDeviceList[id]).State;
+            chanelDown.Enabled = ((TeleVision)allDeviceList[id]).State;
+            chооseChanel.Enabled = ((TeleVision)allDeviceList[id]).State;
+            brightnessUp.Enabled = ((TeleVision)allDeviceList[id]).State;
+            brightnessDown.Enabled = ((TeleVision)allDeviceList[id]).State;
         }
         private void InitializKettle()
         {

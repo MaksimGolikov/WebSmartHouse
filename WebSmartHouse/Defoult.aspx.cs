@@ -215,7 +215,7 @@ namespace WebSmartHouse
             {
                 try
                 {
-                    if (deviceList[key].GetId() == filtr)
+                    if (deviceList[key].Id == filtr)
                     {
                         DevicePanel.Controls.Add(new FormForDevice(key, deviceList));
                     }

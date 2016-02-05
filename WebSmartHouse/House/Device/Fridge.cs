@@ -14,25 +14,25 @@ namespace WebSmartHouse
 
         public Fridge(string name, bool state, bool stateFrize, int programm)
         {
-            this.name = name;
-            this.state = state;
+            this.Name = name;
+            this.State = state;
             this.stateFrize = stateFrize;
             this.power = programm;
-            id = "Fridge";
+            Id = "Fridge";
         }
 
         public bool Switch()
         {
-            if (this.state)
+            if (this.State)
             {
-                this.state = false;
+                this.State = false;
             }
             else
             {
-                this.state = true;
+                this.State = true;
             }
 
-            return this.state;
+            return this.State;
         }
         public bool SwitchFrize()
         {
@@ -51,7 +51,7 @@ namespace WebSmartHouse
         public override string ToString()
         {
             string state;
-            if (this.state)
+            if (this.State)
             {
                 state = "Включен";
             }

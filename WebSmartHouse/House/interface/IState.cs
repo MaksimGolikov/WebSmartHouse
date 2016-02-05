@@ -8,8 +8,7 @@ namespace WebSmartHouse
 {
     public interface IState
     {
-        bool Switch();
-        List<string> Help();
+        bool Switch();        
         string ToString();
     }
 }
