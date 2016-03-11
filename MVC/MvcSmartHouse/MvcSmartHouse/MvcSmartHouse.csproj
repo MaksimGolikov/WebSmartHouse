@@ -178,7 +178,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\APIController.cs" />
-    <Compile Include="Controllers\JSController.cs" />
     <Compile Include="Controllers\ParametrsController.cs" />
     <Compile Include="Controllers\SmartHouseController.cs" />
     <Compile Include="Controllers\StatesController.cs" />
